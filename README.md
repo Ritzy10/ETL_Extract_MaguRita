@@ -15,7 +15,7 @@ ETL_Extract_MaguRita_668940
 
 \last_extraction.txt\ Timestamp tracker for incremental loads
 
-\.gitignore\ Specifies files to ignore in version control
+\ .gitignore\ Specifies files to ignore in version control
 
 \README.md\ Project documentation
 
