@@ -11,7 +11,7 @@ ETL_Extract_MaguRita_668940
 
 \etl_extract.ipynb\ Jupyter notebook with ETL implementation
 
-\sales_data_large.csv\ Generated sales dataset (300+ records)
+\custom_data.csv\ Generated sales dataset (300+ records)
 
 \last_extraction.txt\ Timestamp tracker for incremental loads
 
