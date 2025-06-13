@@ -104,5 +104,5 @@ ETL_Extract_MaguRita_668940
 *Transformed full extraction*
 
 <img src="images/transformed_incremental.png" width="500">
-<img src="images/transformed_incremental.png" width="500">
+<img src="images/transformed_incremental2.png" width="500">
 *Transformed incremental extraction*
