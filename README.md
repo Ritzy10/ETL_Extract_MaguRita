@@ -1,13 +1,12 @@
 # ETL Extract Lab 
 
 **MAGU RITA**  
-**ID NO: 668940**
 
 ## Project Description
 This project demonstrates full and incremental extraction techniques in ETL processes using a realistic, time stamped sales dataset. It includes data cleaning, transformation, categorization and file based timestamp tracking to simulate real world ETL workflows.
 
 ## Project Structure
-ETL_Extract_MaguRita_668940
+ETL_Extract_MaguRita
 
 \etl_extract.ipynb\ Jupyter notebook with ETL implementation
 
