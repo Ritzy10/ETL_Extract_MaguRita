@@ -1,7 +1,17 @@
+# Ignore Jupyter checkpoints and Python cache
 .ipynb_checkpoints/
 __pycache__/
+
+# Ignore log files and SQLite files
 *.log
 *.sqlite
+*.db
+
+# Ignore intermediate transformed CSVs
 last_extraction.txt
 transformed_full.csv
 transformed_incremental.csv
+
+# Lab 5 output files and formats
+*.parquet
+loaded_data/

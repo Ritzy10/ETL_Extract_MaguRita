@@ -1,91 +1,117 @@
 # ETL Extract Lab 
 
-**MAGU RITA**  
-**ID NO: 668940**
+**MAGU RITA** 
 
 ## Project Description
-This project demonstrates full and incremental extraction techniques in ETL processes using a realistic, time stamped sales dataset. It includes data cleaning, transformation, categorization and file based timestamp tracking to simulate real world ETL workflows.
+This project demonstrates full and incremental extraction techniques in ETL processes using a realistic, time-stamped sales dataset. It includes data cleaning, transformation, categorization, file-based timestamp tracking and loading into structured destinations to simulate real-world ETL workflows.
 
 ## Project Structure
-ETL_Extract_MaguRita_668940
+ETL_Extract_MaguRita
 
-\etl_extract.ipynb\ Jupyter notebook with ETL implementation
+\etl_extract.ipynb\ – Jupyter notebook with ETL implementation
 
-\custom_data.csv\ Generated sales dataset (300+ records)
+\etl_load.ipynb\ – Jupyter notebook for loading cleaned data into SQLite and Parquet formats
 
-\last_extraction.txt\ Timestamp tracker for incremental loads
+\custom_data.csv\ – Generated sales dataset (300+ records)
 
-\transformed_full.csv\ Cleaned and categorized dataset from full extraction
+\last_extraction.txt\ – Timestamp tracker for incremental loads
 
-\transformed_incremental.csv\ Cleaned and categorized new records from incremental extraction
+\transformed_full.csv\ – Cleaned and categorized dataset from full extraction
 
-\ .gitignore\ Specifies files to ignore in version control
+\transformed_incremental.csv\ – Cleaned and categorized new records from incremental extraction
 
-\README.md\ Project documentation
+\loaded_data\ – Folder containing `.db` and `.parquet` output files from the load phase
+
+\ .gitignore\ – Specifies files to ignore in version control
+
+\README.md\ – Project documentation
 
 ## Tools Used
 - Python 3
 - pandas
+- sqlite3
+- pyarrow (for Parquet support)
 - Jupyter Notebook
 - datetime
 - os
+- pathlib
 
 ## How to Run
-1. Install dependencies: `pip install pandas jupyter`
 
-2. Open the notebook: `jupyter notebook etl_extract.ipynb`
+### Phase 1: Extraction & Transformation
+1. Install dependencies:  
+   `pip install pandas jupyter`
+2. Open the notebook:  
+   `jupyter notebook etl_extract.ipynb`
+3. Run all cells to:
+   - Generate dataset
+   - Perform full extraction and transformation
+   - Perform incremental transformation based on timestamp
 
-3. Run the notebook cells sequentially
-   - First cell generates the dataset
-   - Second cell demonstrates full extraction
-   - Third cell shows incremental extraction
-   - Fourth cell reads the last extraction timestamp
-   - Fifth cell demonstrates full extraction (cleansing and categorization)
-   - Last cell performs incremental extraction (only new records)
-   
+### Phase 2: Load
+1. Install extra dependency:  
+   `pip install pyarrow` *(for Parquet support)*
+2. Open the load notebook:  
+   `jupyter notebook etl_load.ipynb`
+3. Run the following steps:
+   - Load transformed data into SQLite databases (`full_data.db`, `incremental_data.db`)
+   - Save full dataset to `full_data.parquet`
+   - Preview and verify successful loading
 
 ## Key Features
-1. Full Extraction
+
+### 1. Full Extraction
 - Reads all records from `sales_data_large.csv`
 - Removes duplicates
-- Adds a derived column: **Sales Category** (`Low`, `Medium`, `High`)
-- Saves cleaned output to `transformed_full.csv`
+- Adds derived column: **Sales Category** (`Low`, `Medium`, `High`)
+- Outputs to `transformed_full.csv`
 - Prints record count and sample output
 
-2. Incremental Extraction
+### 2. Incremental Extraction
 - Reads `last_extraction.txt` to filter only new rows
-- Applies the same deduplication and categorization
+- Applies same deduplication and categorization logic
 - Outputs to `transformed_incremental.csv`
-- Updates the timestamp to latest record loaded
+- Updates timestamp tracker
 
-3. Categorization Logic
+### 3. Categorization Logic
 - **Low**: Amount < 500  
 - **Medium**: 500 ≤ Amount < 1500  
 - **High**: Amount ≥ 1500
 
+### 4. Loading (Lab 5 – Load)
+- Loads transformed data into SQLite databases (`.db`)
+- Saves full data as a Parquet file (`.parquet`)
+- Provides verification by reading from SQLite and Parquet
+
 ## Dataset Details
 - File: `sales_data_large.csv`
-- Contains 2 months of simulated sales data (April-May 2025)
+- Contains 2 months of simulated sales data (April–May 2025)
 - 6 major customers (Amazon, Walmart, Target, etc.)
-- 3-6 transactions per day
-- Random amounts ($100-$2000 range)
+- 3–6 transactions per day
+- Random amounts ($100–$2000 range)
 - Precise timestamps for each transaction
 
 ## Expected Outputs
-1. **Full Extraction**
-   Extracted 275 rows fully
- 
 
-2. **Incremental Extraction**
-   Extracted 192 rows incrementally since 2025-04-20 12:00:00.
-   
+### Full Extraction
+Extracted 275 rows fully  
 
-3. **Log File**
-   `last_extraction.txt` contains the timestamp of the latest row processed for incremental runs.
-   Updated last_extraction.txt to 2025-05-31 23:12:00
+### Incremental Extraction
+Extracted 192 rows incrementally since `2025-04-20 12:00:00`.
 
- 
- ## Screenshots
+### Log File
+`last_extraction.txt` contains the timestamp of the latest row processed.
+Updated last_extraction.txt to `2025-05-31 23:12:00`
+
+### Load Outputs 
+- SQLite:
+  - `loaded_data/full_data.db`
+  - `loaded_data/incremental_data.db`
+- Parquet:
+  - `loaded_data/full_data.parquet`
+- Preview confirms correct structure and data integrity
+
+## Screenshots
 
 <img src="images/dataset.png" width="500">
 *Dataset generation*
@@ -106,3 +132,8 @@ ETL_Extract_MaguRita_668940
 <img src="images/transformed_incremental.png" width="500">
 <img src="images/transformed_incremental2.png" width="500">
 *Transformed incremental extraction*
+
+<img src="images/load_data.png" width="500">
+<img src="images/verification.png" width="500">
+*ETL Load*
+
