@@ -45,8 +45,19 @@ ETL_Extract_MaguRita
    `jupyter notebook etl_extract.ipynb`
 3. Run all cells to:
    - Generate dataset
+
+<img src="images/dataset.png" width="500">
+
    - Perform full extraction and transformation
+
+<img src="images/full_extraction.png" width="500">
+
    - Perform incremental transformation based on timestamp
+
+<img src="images/incremental_extraction.png" width="500">
+<img src="images/last_extraction.png" width="500">
+
+
 
 ### Phase 2: Load
 1. Install extra dependency:  
@@ -58,6 +69,10 @@ ETL_Extract_MaguRita
    - Save full dataset to `full_data.parquet`
    - Preview and verify successful loading
 
+<img src="images/load_data.png" width="500">
+<img src="images/verification.png" width="500">
+
+
 ## Key Features
 
 ### 1. Full Extraction
@@ -67,21 +82,30 @@ ETL_Extract_MaguRita
 - Outputs to `transformed_full.csv`
 - Prints record count and sample output
 
+<img src="images/transformed_full.png" width="500">
+<img src="images/transformed_full2.png" width="500">
+
+
 ### 2. Incremental Extraction
 - Reads `last_extraction.txt` to filter only new rows
 - Applies same deduplication and categorization logic
 - Outputs to `transformed_incremental.csv`
 - Updates timestamp tracker
 
+<img src="images/transformed_incremental.png" width="500">
+<img src="images/transformed_incremental2.png" width="500">
+
+
 ### 3. Categorization Logic
 - **Low**: Amount < 500  
 - **Medium**: 500 ≤ Amount < 1500  
 - **High**: Amount ≥ 1500
 
-### 4. Loading (Lab 5 – Load)
+### 4. Loading 
 - Loads transformed data into SQLite databases (`.db`)
 - Saves full data as a Parquet file (`.parquet`)
 - Provides verification by reading from SQLite and Parquet
+
 
 ## Dataset Details
 - File: `sales_data_large.csv`
@@ -111,29 +135,8 @@ Updated last_extraction.txt to `2025-05-31 23:12:00`
   - `loaded_data/full_data.parquet`
 - Preview confirms correct structure and data integrity
 
-## Screenshots
 
-<img src="images/dataset.png" width="500">
-*Dataset generation*
 
-<img src="images/full_extraction.png" width="500">
-*Full extraction* 
 
-<img src="images/incremental_extraction.png" width="500">
-*Incremental extraction*
 
-<img src="images/last_extraction.png" width="500">
-*Last extraction timestamp file*
-
-<img src="images/transformed_full.png" width="500">
-<img src="images/transformed_full2.png" width="500">
-*Transformed full extraction*
-
-<img src="images/transformed_incremental.png" width="500">
-<img src="images/transformed_incremental2.png" width="500">
-*Transformed incremental extraction*
-
-<img src="images/load_data.png" width="500">
-<img src="images/verification.png" width="500">
-*ETL Load*
 
